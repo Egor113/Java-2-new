@@ -63,7 +63,7 @@ public class Main {
         }
         System.out.println();
     }
-    //Метод проверки, явлется строка целочисленным Количеством или нет
+    //Метод проверки, явлется строка целочисленным числом или нет
     public static boolean isInteger(String s) {
         try {
             Integer.parseInt(s);
