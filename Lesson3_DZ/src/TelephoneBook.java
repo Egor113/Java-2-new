@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.TreeMap;
 
 /*
 2. Написать простой класс ТелефонныйСправочник, который хранит в себе
@@ -17,24 +18,26 @@ import java.util.Map;
  тестировать просто из метода main() прописывая add() и get().
  */
 public class TelephoneBook {
-    private HashMap<String,String> book;
+    private TreeMap<String,String> book = new TreeMap<>();;
 
-    public TelephoneBook(HashMap<String, String> book) {
-        this.book = book;
-    }
-
-    public HashMap<String, String> getBook() {
+    public TreeMap<String, String> getBook() {
         return book;
     }
 
+    public void add(String telephone, String surname){
+        book.put(telephone,surname);
+    }
 
-
-    public void get(Map.Entry<String,String> record){
+    public void get(String surname){
+        System.out.println("Телефон " + surname + "(a):");
+        boolean find = false;
         for (Map.Entry<String,String> pair: book.entrySet()
                 ) {
-            if (pair.getValue().equals(record.getValue())){
+            if (pair.getValue().equals(surname)){
+                find = true;
                 System.out.println(pair.getValue() + " " + pair.getKey());
             }
         }
+        if (!find) System.out.println("Телефон не найден!");
     }
 }

@@ -1,16 +1,16 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-public class Main {
+public class MainTask1 {
     public static void main(String[] args) {
-        task1();
-    }
 
-    /*
+            /*
     1. Создать массив с набором слов (10-20 слов, должны встречаться повторяющиеся).
     Найти и вывести список уникальных слов, из которых состоит массив
     (дубликаты не считаем). Посчитать сколько раз встречается каждое слово.
     */
-    public static void task1(){
 
         ArrayList<String> listOfWords = new ArrayList<>();
         listOfWords.add("AA");
@@ -46,12 +46,5 @@ public class Main {
                 ) {
             System.out.println("Слово " + pair.getKey() + " встречается " + pair.getValue() + " раз(а)");
         }
-    }
-
-    /*
-
-     */
-    public static void task2(){
-
     }
 }
