@@ -2,9 +2,6 @@ import java.util.*;
 
 public class MainTask2 {
     public static void main(String[] args) {
-        //task1();
-
-
 
         TelephoneBook telephoneBook = new TelephoneBook();
         telephoneBook.add("81111111111","Иванов");
