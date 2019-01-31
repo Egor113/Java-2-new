@@ -19,26 +19,21 @@ public class MainStar1 {
     }
 
     public static void method2(int threadNumber){
-        final int size = 10_000_000;
+        final int size = 10;
         final int h = size / threadNumber;
         float[] arr = new float[size];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = 1;
-        }
-
-        ArrayList<float[]> listArray = new ArrayList<>();
-        for (int i = 0; i < threadNumber; i++) {
-            listArray.add(new float[h]);
-        }
-
-        for (int i = 0; i < threadNumber; i++) {
-            System.arraycopy(arr,0,listArray.get(i),0,h);
+            System.out.println(arr[i]);
         }
 
         ArrayList<MyThread> listThread = new ArrayList<>();
-
+        int firstIndex = 0;
         for (int i = 0; i < threadNumber; i++) {
-            listThread.add(new MyThread(h));
+            float[] a = new float[h];
+            System.arraycopy(arr,firstIndex,a,0,h);
+            listThread.add(new MyThread(h,a));
+            firstIndex += h;
         }
 
         long a = System.currentTimeMillis();
@@ -54,9 +49,13 @@ public class MainStar1 {
                 e.printStackTrace();
             }
         }
-
+        firstIndex = 0;
         for (int i = 0; i < threadNumber; i++) {
-            System.arraycopy(listArray.get(i),0,arr,0,h);
+            System.arraycopy(listThread.get(i).getArr(),0,arr,firstIndex,h);
+            firstIndex += h;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
         }
 
         System.out.println(System.currentTimeMillis() - a);

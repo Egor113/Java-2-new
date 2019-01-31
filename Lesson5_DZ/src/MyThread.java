@@ -2,17 +2,11 @@ import java.util.ArrayList;
 
 public class MyThread extends Thread{
 
-    private int h;
-
     private float[] arr;
 
-    public MyThread(int h){
-        this.h = h;
+    public MyThread(int h, float[] arr){
         this.arr = new float[h];
-    }
-
-    public int getH() {
-        return h;
+        System.arraycopy(arr,0,this.arr,0,h);
     }
 
     public float[] getArr() {
