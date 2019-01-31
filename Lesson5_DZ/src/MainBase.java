@@ -1,6 +1,6 @@
 public class MainBase {
     public static void main(String[] args) {
-        //method1();
+        method1();
         method2();
     }
 
@@ -15,7 +15,7 @@ public class MainBase {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = (float)(arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
         }
-        System.out.println(System.currentTimeMillis() - a);
+        System.out.println("Время обработки массива без разбивки составляет " + (System.currentTimeMillis() - a) + " мс");
     }
 
     public static void method2(){
@@ -56,7 +56,7 @@ public class MainBase {
         System.arraycopy(a1, 0, arr, 0, h);
         System.arraycopy(a2, 0, arr, h, h);
 
-        System.out.println(System.currentTimeMillis() - a);
+        System.out.println("Время обработки массива при разбивке на 2 потока составляет " + (System.currentTimeMillis() - a) + " мс");
     }
 
 }

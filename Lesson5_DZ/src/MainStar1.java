@@ -2,7 +2,10 @@ import java.util.ArrayList;
 
 public class MainStar1 {
     public static void main(String[] args) {
+        //method1();
+        method2(2);
         method2(6);
+        method2(100);
     }
     public static void method1(){
         final int size = 10_000_000;
@@ -15,7 +18,7 @@ public class MainStar1 {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = (float)(arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
         }
-        System.out.println(System.currentTimeMillis() - a);
+        System.out.println("Время обработки массива без разбивки составляет " + (System.currentTimeMillis() - a) + " мс");
     }
 
     public static void method2(int threadNumber){
@@ -37,6 +40,9 @@ public class MainStar1 {
 
         ArrayList<MyThread> listThread = new ArrayList<>();
         int firstIndex = 0;
+
+        long startTime = System.currentTimeMillis();
+
         for (int i = 0; i < threadNumber; i++) {
             if (!isDivisible && (i==threadNumber-1)){
                 float[] a = new float[h+difference];
@@ -50,7 +56,6 @@ public class MainStar1 {
             firstIndex += h;
         }
 
-        long a = System.currentTimeMillis();
         for (int i = 0; i < threadNumber; i++) {
             listThread.get(i).start();
         }
@@ -76,6 +81,6 @@ public class MainStar1 {
 //            System.out.println(arr[i]);
 //        }
 
-        System.out.println("Время обработки массива " + (System.currentTimeMillis() - a) + " мс");
+        System.out.println("Время обработки массива при разбивке на " + threadNumber + " потока(ов) составляет " + (System.currentTimeMillis() - startTime) + " мс");
     }
 }
