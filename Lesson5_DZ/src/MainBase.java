@@ -1,6 +1,6 @@
 public class MainBase {
     public static void main(String[] args) {
-        method1();
+        //method1();
         method2();
     }
 
@@ -25,9 +25,10 @@ public class MainBase {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = 1;
         }
-        long a = System.currentTimeMillis();
+
         float[] a1 = new float[h];
         float[] a2 = new float[h];
+        long a = System.currentTimeMillis();
         System.arraycopy(arr,0,a1,0,h);
         System.arraycopy(arr,0,a2,0,h);
 
@@ -53,7 +54,7 @@ public class MainBase {
         }
 
         System.arraycopy(a1, 0, arr, 0, h);
-        System.arraycopy(a2, 0, arr, 0, h);
+        System.arraycopy(a2, 0, arr, h, h);
 
         System.out.println(System.currentTimeMillis() - a);
     }
