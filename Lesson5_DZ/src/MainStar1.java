@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class MainStar1 {
     public static void main(String[] args) {
-        method2(2);
+        method2(6);
     }
     public static void method1(){
         final int size = 10_000_000;
@@ -19,17 +19,31 @@ public class MainStar1 {
     }
 
     public static void method2(int threadNumber){
-        final int size = 10;
+        boolean isDivisible = true;
+        final int size = 10_000_000;
         final int h = size / threadNumber;
+        int difference = 0;
+        if (!(size % threadNumber == 0)){
+            isDivisible = false;
+            difference = size % threadNumber;
+        }
+
+
         float[] arr = new float[size];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = 1;
-            System.out.println(arr[i]);
+            //System.out.println(arr[i]);
         }
 
         ArrayList<MyThread> listThread = new ArrayList<>();
         int firstIndex = 0;
         for (int i = 0; i < threadNumber; i++) {
+            if (!isDivisible && (i==threadNumber-1)){
+                float[] a = new float[h+difference];
+                System.arraycopy(arr,firstIndex,a,0,h+difference);
+                listThread.add(new MyThread(h+difference,a));
+                break;
+            }
             float[] a = new float[h];
             System.arraycopy(arr,firstIndex,a,0,h);
             listThread.add(new MyThread(h,a));
@@ -51,13 +65,17 @@ public class MainStar1 {
         }
         firstIndex = 0;
         for (int i = 0; i < threadNumber; i++) {
+            if (!isDivisible && (i==threadNumber-1)){
+                System.arraycopy(listThread.get(i).getArr(),0,arr,firstIndex,h+difference);
+                break;
+            }
             System.arraycopy(listThread.get(i).getArr(),0,arr,firstIndex,h);
             firstIndex += h;
         }
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
-        }
+//        for (int i = 0; i < arr.length; i++) {
+//            System.out.println(arr[i]);
+//        }
 
-        System.out.println(System.currentTimeMillis() - a);
+        System.out.println("Время обработки массива " + (System.currentTimeMillis() - a) + " мс");
     }
 }
