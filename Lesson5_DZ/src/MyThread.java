@@ -1,8 +1,8 @@
 import java.util.ArrayList;
-
+//Класс МойПоток
 public class MyThread extends Thread{
 
-    private float[] arr;
+    private float[] arr; //Массив, который будет считаться в потоке
 
     public MyThread(int h, float[] arr){
         this.arr = new float[h];

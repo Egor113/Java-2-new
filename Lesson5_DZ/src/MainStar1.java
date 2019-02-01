@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class MainStar1 {
     public static void main(String[] args) {
-        //method1();
+        method1();
         method2(2);
         method2(6);
         method2(100);
@@ -22,10 +22,11 @@ public class MainStar1 {
     }
 
     public static void method2(int threadNumber){
-        boolean isDivisible = true;
+        boolean isDivisible = true; //Признак того, делится
+        // ли массив на цело на число потоков или нет
         final int size = 10_000_000;
         final int h = size / threadNumber;
-        int difference = 0;
+        int difference = 0; //количество "лишних" элементов массива
         if (!(size % threadNumber == 0)){
             isDivisible = false;
             difference = size % threadNumber;
@@ -35,14 +36,17 @@ public class MainStar1 {
         float[] arr = new float[size];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = 1;
-            //System.out.println(arr[i]);
         }
 
+        //Лист потоков
         ArrayList<MyThread> listThread = new ArrayList<>();
         int firstIndex = 0;
 
         long startTime = System.currentTimeMillis();
 
+        //Заполнение списка потоков элементами массива
+        //Отдельно прописан вариант заполнения в случае,
+        //если не все элементы массива укладываются в потоки
         for (int i = 0; i < threadNumber; i++) {
             if (!isDivisible && (i==threadNumber-1)){
                 float[] a = new float[h+difference];
@@ -69,6 +73,7 @@ public class MainStar1 {
             }
         }
         firstIndex = 0;
+        //Копироварование массивов из списка потоков в исходный массив
         for (int i = 0; i < threadNumber; i++) {
             if (!isDivisible && (i==threadNumber-1)){
                 System.arraycopy(listThread.get(i).getArr(),0,arr,firstIndex,h+difference);
@@ -77,9 +82,6 @@ public class MainStar1 {
             System.arraycopy(listThread.get(i).getArr(),0,arr,firstIndex,h);
             firstIndex += h;
         }
-//        for (int i = 0; i < arr.length; i++) {
-//            System.out.println(arr[i]);
-//        }
 
         System.out.println("Время обработки массива при разбивке на " + threadNumber + " потока(ов) составляет " + (System.currentTimeMillis() - startTime) + " мс");
     }
