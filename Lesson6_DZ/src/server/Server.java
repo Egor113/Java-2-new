@@ -48,7 +48,11 @@ public class Server {
         sendMessage(messageOut);
     }
 
-    public void receiveMessage() throws IOException {
-        System.out.println("Message from client: " + in.readUTF());
+    public void receiveMessage(){
+        try {
+            System.out.println("Message from client: " + in.readUTF());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

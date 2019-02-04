@@ -21,13 +21,9 @@ public class Client {
             e.printStackTrace();
         }
     }
-    public void sendMessage(){
-        System.out.println("Enter a message for a client");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String messageOut = null;
+    public void sendMessage(String message){
         try {
-            messageOut = reader.readLine();
-            out.writeUTF(messageOut);
+            out.writeUTF(message);
         } catch (IOException e) {
             e.printStackTrace();
         }
