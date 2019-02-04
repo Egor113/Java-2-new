@@ -11,7 +11,7 @@ public class Server {
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
-
+    public static boolean isStarted = false;
     public Server(){
         try {
             server = new ServerSocket(8090);
@@ -22,6 +22,7 @@ public class Server {
 
             in = new DataInputStream(socket.getInputStream());
             out = new DataOutputStream(socket.getOutputStream());
+            isStarted = true;
 
         } catch (IOException e) {
             e.printStackTrace();
