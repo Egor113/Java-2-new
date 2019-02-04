@@ -19,7 +19,7 @@ public class Controller implements Initializable {
     public TextArea textArea;
 
     private final String HOST = "localhost";
-    private final int PORT = 8080;
+    private final int PORT = 8070;
 
     private Socket socket;
     private DataInputStream in;
