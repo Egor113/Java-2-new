@@ -36,7 +36,7 @@ public class Controller implements Initializable {
                 try {
                     while (true){
                         String message = in.readUTF();
-                        System.out.println("from server:" + message);
+                        System.out.println("from lesson6.server:" + message);
                         textArea.appendText(message + "\n");
                     }
                 } catch (IOException e) {

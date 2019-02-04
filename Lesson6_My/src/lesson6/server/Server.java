@@ -21,7 +21,7 @@ public class Server {
         try {
 
             server = new ServerSocket(8080);
-            System.out.println("server start");
+            System.out.println("lesson6.server start");
 
             while (true) {
                 socket = server.accept();

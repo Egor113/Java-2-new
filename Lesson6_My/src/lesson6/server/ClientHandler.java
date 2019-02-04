@@ -29,7 +29,7 @@ public class ClientHandler {
                         String line = null;
                         line = in.readUTF();
                         System.out.println("from client:" + line);
-//                out.writeUTF("from server:" + line);
+//                out.writeUTF("from lesson6.server:" + line);
                         server.broadCast(line);
                     }
                 } catch (IOException e) {

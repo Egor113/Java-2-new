@@ -1,6 +1,6 @@
 package lesson6.lesson5.hw;
 
-import lesson5.hw.ru.geekbrains.Jawa2.Lesson5.Array;
+//import lesson6.lesson5.hw.ru.geekbrains.Jawa2.Lesson5.Array;
 
 import java.util.Arrays;
 
