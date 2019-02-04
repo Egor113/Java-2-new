@@ -1,8 +1,6 @@
 package client;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 
 public class Client {
@@ -16,18 +14,27 @@ public class Client {
     public Client(){
         try {
             socket = new Socket(HOST, PORT);
+            System.out.println("Client start");
             in = new DataInputStream(socket.getInputStream());
             out = new DataOutputStream(socket.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    public void receiveMessage(){
-        String messageIn = null;
+    public void sendMessage(){
+        System.out.println("Enter a message for a client");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String messageOut = null;
         try {
-            messageIn = in.readUTF();
-            System.out.println("from server: " + messageIn);
+            messageOut = reader.readLine();
+            out.writeUTF(messageOut);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void receiveMessage(){
+        try {
+            System.out.println("from server: " + in.readUTF());
         } catch (IOException e) {
             e.printStackTrace();
         }
