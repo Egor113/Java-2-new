@@ -30,7 +30,7 @@ public class Client {
     }
     public void receiveMessage(){
         try {
-            System.out.println("from server: " + in.readUTF());
+            System.out.println("Message from server: " + in.readUTF());
         } catch (IOException e) {
             e.printStackTrace();
         }

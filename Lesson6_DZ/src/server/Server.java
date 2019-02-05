@@ -11,7 +11,7 @@ public class Server {
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
-    public static boolean isStarted = false;
+
     public Server(){
         try {
             server = new ServerSocket(8090);
@@ -22,7 +22,6 @@ public class Server {
 
             in = new DataInputStream(socket.getInputStream());
             out = new DataOutputStream(socket.getOutputStream());
-            isStarted = true;
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -34,18 +33,6 @@ public class Server {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void putSendMessage(){
-        System.out.println("Enter a message for a client");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String messageOut = null;
-        try {
-            messageOut = reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        sendMessage(messageOut);
     }
 
     public void receiveMessage(){
