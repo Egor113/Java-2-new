@@ -67,7 +67,7 @@ public class Server {
         for (ClientHandler c: clients
              ) {
             if (line.lastIndexOf(c.getClient().getNick()) != -1){
-                String message = line.substring(line.indexOf(c.getClient().getNick()));
+                String message = line.substring(line.indexOf(c.getClient().getNick()) + c.getClient().getNick().length()+1);
                 c.sendMsg(message);
             }
         }
