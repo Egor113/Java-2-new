@@ -62,4 +62,14 @@ public class Server {
     public void unsubscribe(ClientHandler client){
         clients.remove(client);
     }
+
+    public void sendToUser(String line) {
+        for (ClientHandler c: clients
+             ) {
+            if (line.lastIndexOf(c.getClient().getNick()) != -1){
+                String message = line.substring(line.indexOf(c.getClient().getNick()));
+                c.sendMsg(message);
+            }
+        }
+    }
 }

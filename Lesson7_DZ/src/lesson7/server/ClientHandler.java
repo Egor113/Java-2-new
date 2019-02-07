@@ -31,8 +31,13 @@ public class ClientHandler {
                 try {
                     while (true) {
                         String line = in.readUTF();
-                        System.out.print("from " + client.getNick() + line);
-                        server.broadCast(client.getNick() + ": " + line);
+                        if (line.startsWith("/w")){
+                            server.sendToUser(line);
+                        }
+                        else{
+                            System.out.print("from " + client.getNick() + line);
+                            server.broadCast(client.getNick() + ": " + line);
+                        }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -43,6 +48,10 @@ public class ClientHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Client getClient() {
+        return client;
     }
 
     public void sendMsg(String msg) {
