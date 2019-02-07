@@ -32,7 +32,7 @@ public class ClientHandler {
                     while (true) {
                         String line = in.readUTF();
                         if (line.startsWith("/w")){
-                            server.sendToUser(line);
+                            server.sendToUser(line, client.getNick());
                         }
                         else{
                             System.out.print("from " + client.getNick() + line);

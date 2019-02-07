@@ -63,12 +63,12 @@ public class Server {
         clients.remove(client);
     }
 
-    public void sendToUser(String line) {
+    public void sendToUser(String line, String nick) {
         for (ClientHandler c: clients
              ) {
             if (line.lastIndexOf(c.getClient().getNick()) != -1){
                 String message = line.substring(line.indexOf(c.getClient().getNick()) + c.getClient().getNick().length()+1);
-                c.sendMsg(message);
+                c.sendMsg(nick + ": " + message);
             }
         }
     }
