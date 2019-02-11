@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class CsvAuthService implements AuthService {
     private Set<Client> users = new LinkedHashSet<>();
-    private final String PATH = "./data/db.csv";
+    private final String PATH = "./db.csv";
 
 
     public CsvAuthService() {

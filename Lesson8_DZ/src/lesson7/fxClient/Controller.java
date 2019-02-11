@@ -94,7 +94,10 @@ public class Controller {
                                     }
                                 });
                             }
-
+                            if (message.startsWith("/close")){
+                                socket.close();
+                                authenticate(false);
+                            }
                         } else {
                             System.out.print("from server:" + message);
                             textArea.appendText(message);

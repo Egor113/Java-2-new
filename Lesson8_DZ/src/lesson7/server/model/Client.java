@@ -10,6 +10,7 @@ public class Client {
     private String pass;
     private String nick;
     private Set<String> blockList = new HashSet<>();
+    private long startTime;
 
     public Client() {
     }
@@ -18,6 +19,7 @@ public class Client {
         this.login = login;
         this.pass = pass;
         this.nick = nick;
+        this.startTime = System.currentTimeMillis();
     }
 
     public static Client from(String[] creds) {
@@ -54,5 +56,9 @@ public class Client {
 
     public void setBlockList(Set<String> blockList) {
         this.blockList = blockList;
+    }
+
+    public long getStartTime() {
+        return startTime;
     }
 }

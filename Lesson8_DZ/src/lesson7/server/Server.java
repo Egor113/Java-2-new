@@ -23,6 +23,24 @@ public class Server {
             server = new ServerSocket(8090);
             System.out.println("server start");
 
+            new Thread(() -> {
+                try{
+                    while (true) {
+                        for (int i = 0; i < clients.size(); i++) {
+                            if (System.currentTimeMillis() - this.clients.get(i).getClient().getStartTime() > 10000) {
+                                //unsubscribe(clients.get(i));
+                                //System.out.println("client " + clients.get(i).getClient().getNick() + " closed");
+                                clients.get(i).getOut().writeUTF("/close");
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex){
+                    System.out.println("client " + " closed");
+                }
+
+            }).start();
+
             while (true) {
                 socket = server.accept();
                 System.out.println("client connected");

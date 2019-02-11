@@ -67,4 +67,12 @@ public class ClientHandler {
     public Client getClient() {
         return client;
     }
+
+    public DataInputStream getIn() {
+        return in;
+    }
+
+    public DataOutputStream getOut() {
+        return out;
+    }
 }
