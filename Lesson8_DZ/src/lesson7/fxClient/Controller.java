@@ -29,7 +29,7 @@ public class Controller {
     public Button loginBtn;
 
     private final String HOST = "localhost";
-    private final int PORT = 8080;
+    private final int PORT = 8090;
 
     private Socket socket;
     private DataInputStream in;

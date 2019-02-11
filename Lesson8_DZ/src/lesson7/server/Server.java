@@ -20,7 +20,7 @@ public class Server {
         Socket socket = null;
         try {
 
-            server = new ServerSocket(8080);
+            server = new ServerSocket(8090);
             System.out.println("server start");
 
             while (true) {
